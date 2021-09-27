@@ -1,19 +1,55 @@
 <template>
-  <view class="container">
-    <text class="text-color-primary">Here goes the new project</text>
-    <text class="text-color-primary">It is gonna be a vuetiful app!</text>
-    <text class="text-color-primary">Greetings from Chris!</text>
-  </view>
+  <app-navigator></app-navigator>
 </template>
 
-<style>
-.container {
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+<script>
+import {
+  createAppContainer,
+  createStackNavigator,
+} from "vue-native-router";
+
+import * as firebase from "firebase";
+import LoginScreen from "./Login.vue"
+import RegisterScreen from "./Register.vue"
+
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Warning: ...']);
+
+// RN >= 0.52
+import {YellowBox} from 'react-native';
+
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
+
+// RN < 0.52
+console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
+
+
+const StackNavigator = createStackNavigator(
+  {
+    Home: LoginScreen,
+    Register: RegisterScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppNavigator = createAppContainer(StackNavigator);
+
+export default {
+  components: { AppNavigator },
+  
+
+  data() {
+    return {
+      userInfo: {}, 
+    };
+  },
+
+  async mounted () {
+
+  },
+
 }
-.text-color-primary {
-  color: red;
-}
-</style>
+</script>
