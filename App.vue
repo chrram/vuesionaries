@@ -11,6 +11,7 @@ import {
 import * as firebase from "firebase";
 import LoginScreen from "./Login.vue"
 import RegisterScreen from "./Register.vue"
+import OrderScreen from "./Order.vue"
 
 import { LogBox } from 'react-native';
 
@@ -29,6 +30,7 @@ const StackNavigator = createStackNavigator(
   {
     Home: LoginScreen,
     Register: RegisterScreen,
+    Order: OrderScreen,
   },
   {
     initialRouteName: 'Home',

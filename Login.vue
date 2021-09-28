@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     async login () {
-      console.log("Login here")
+      this.navigation.navigate('Order')
     }
   },
 
