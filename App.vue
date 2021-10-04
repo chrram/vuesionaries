@@ -23,9 +23,21 @@
 </template>
 
 <script>
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 import {LogBox} from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']);
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyD1peEn0FDGojiMbhTl-Y-uIuSSQL_XH2s",
+  authDomain: "mwsd-project-3b871.firebaseapp.com",
+  projectId: "mwsd-project-3b871",
+  storageBucket: "mwsd-project-3b871.appspot.com",
+  messagingSenderId: "888827003326",
+  appId: "1:888827003326:web:4d218192bd4ca25e2fb9ef"
+};
+const app = firebase.initializeApp(firebaseConfig);
+
 
 //TODO del
 export default {
