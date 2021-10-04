@@ -28,9 +28,9 @@ console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
 
 const StackNavigator = createStackNavigator(
   {
-    Home: LoginScreen,
-    Register: RegisterScreen,
-    Order: OrderScreen,
+    Home: OrderScreen,
+    // Register: RegisterScreen,
+    // Order: OrderScreen,
   },
   {
     initialRouteName: 'Home',
