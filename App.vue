@@ -19,6 +19,20 @@
     >
       <text :style="{color: 'white'}">Order</text>
     </touchable-opacity>
+    <touchable-opacity
+      :on-press="resetCoffees"
+      :style="{
+        width: 200,
+        height: 40,
+        margin: 20,
+        backgroundColor: 'brown',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+      }"
+    >
+      <text :style="{color: 'white'}">Reset Order</text>
+    </touchable-opacity>
   </view>
 </template>
 
@@ -37,7 +51,7 @@ const firebaseConfig = {
   appId: '1:888827003326:web:4d218192bd4ca25e2fb9ef',
 };
 const app = firebase.initializeApp(firebaseConfig);
-
+//TODO show number of coffees ordered
 export default {
   methods: {
     orderCoffee() {
@@ -54,7 +68,14 @@ export default {
         });
     },
     resetCoffees() {
-      //TODO
+      dbRef = firebase.default.firestore().collection('coffees');
+      dbRef
+        .doc('9IpwtC8Qh1jrlJ3STbrP')
+        .set({numberOrdered: 0}, {merge: true})
+        .then(() => {
+          console.log('Reset coffee order!');
+          //TODO alert
+        });
     },
   },
 };
