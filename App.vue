@@ -6,7 +6,7 @@
       >Coffee Drinker 2000</text
     >
     <touchable-opacity
-      :on-press="() => {}"
+      :on-press="orderCoffee"
       :style="{
         width: 200,
         height: 40,
@@ -38,7 +38,26 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 
-export default {};
+export default {
+  methods: {
+    orderCoffee() {
+      dbRef = firebase.default.firestore().collection('coffees');
+      dbRef
+        .doc('9IpwtC8Qh1jrlJ3STbrP')
+        .set(
+          {numberOrdered: firebase.firestore.FieldValue.increment(1)},
+          {merge: true}
+        )
+        .then(() => {
+          console.log('Ordered!');
+          //TODO alert
+        });
+    },
+    resetCoffees() {
+      //TODO
+    },
+  },
+};
 </script>
 
 <style>
