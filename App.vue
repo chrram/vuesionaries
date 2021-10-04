@@ -39,6 +39,8 @@
 <script>
 import firebase from 'firebase';
 import {LogBox} from 'react-native';
+import {Alert} from 'react-native';
+
 LogBox.ignoreLogs(['Warning: ...']);
 
 // Initialize Firebase
@@ -51,7 +53,6 @@ const firebaseConfig = {
   appId: '1:888827003326:web:4d218192bd4ca25e2fb9ef',
 };
 const app = firebase.initializeApp(firebaseConfig);
-//TODO show number of coffees ordered
 export default {
   methods: {
     orderCoffee() {
@@ -64,7 +65,10 @@ export default {
         )
         .then(() => {
           console.log('Ordered!');
-          //TODO alert
+          Alert.alert(
+            'We received your order.',
+            'Your coffee is on the way :)'
+          );
         });
     },
     resetCoffees() {
@@ -74,7 +78,10 @@ export default {
         .set({numberOrdered: 0}, {merge: true})
         .then(() => {
           console.log('Reset coffee order!');
-          //TODO alert
+          Alert.alert(
+            'We have reset your order.',
+            'Hope to see you again soon.'
+          );
         });
     },
   },
