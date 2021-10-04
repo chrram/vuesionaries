@@ -1,57 +1,52 @@
 <template>
-  <app-navigator></app-navigator>
+  <view class="container">
+    <text class="text-color-primary">Vuesionaries</text>
+    <text
+      :style="{color: 'brown', margin: 20, fontSize: 20, fontWeight: 'bold'}"
+      >Coffee Drinker 2000</text
+    >
+    <touchable-opacity
+      :on-press="() => {}"
+      :style="{
+        width: 200,
+        height: 40,
+        margin: 20,
+        backgroundColor: 'brown',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+      }"
+    >
+      <text :style="{color: 'white'}">Order</text>
+    </touchable-opacity>
+  </view>
 </template>
 
 <script>
-import {
-  createAppContainer,
-  createStackNavigator,
-} from "vue-native-router";
-
-import * as firebase from "firebase";
-import LoginScreen from "./Login.vue"
-import RegisterScreen from "./Register.vue"
-import OrderScreen from "./Order.vue"
-
-import { LogBox } from 'react-native';
-
+import * as firebase from 'firebase';
+import {LogBox} from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']);
 
-// RN >= 0.52
-import {YellowBox} from 'react-native';
-
-YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
-
-// RN < 0.52
-console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
-
-
-const StackNavigator = createStackNavigator(
-  {
-    Home: OrderScreen,
-    // Register: RegisterScreen,
-    // Order: OrderScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-
-const AppNavigator = createAppContainer(StackNavigator);
-
+//TODO del
 export default {
-  components: { AppNavigator },
-  
-
   data() {
     return {
-      userInfo: {}, 
+      userInfo: {},
     };
   },
-
-  async mounted () {
-
-  },
-
-}
+};
 </script>
+
+<style>
+.container {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.text-color-primary {
+  color: brown;
+  font-size: 30;
+  font-weight: bold;
+}
+</style>
